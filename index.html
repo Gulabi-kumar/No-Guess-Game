@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(rgb(113, 144, 164));
+        background-image: url("forest1.webp");
+      }
+      .container {
+        border: 2px solid black;
+        margin: auto;
+        min-width: 220px;
+        background-color: rgb(206, 244, 244);
+        /* box-shadow: -20px 50px 70px 10px; */
+        filter: drop-shadow(20px 100px 100px);
+        border-radius: 10px;
+      }
+      .menu {
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+        flex-wrap: wrap; 
+      }
+      .box1 {
+        height: 30px;
+        width: 210px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-weight: bold;
+        font-size: large;
+        border: 1px solid black;
+        border-radius: 120px;
+        padding-left:20px;
+        padding-top: 8px;
+        background-color: rgba(229, 244, 16, 0.616);
+        min-width: 200px;
+      }
+      .unknown {
+        height: 30px;
+        width: 50px;
+        background-color: rgba(229, 244, 16, 0.616);
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        margin-top: 10px;
+        margin-left: 40%;
+        font-weight: bold;
+        border: 2px solid black;
+      }
+
+      #inputNo {
+        height: 20px;
+        background-color: rgba(229, 244, 16, 0.616);
+        align-items: center;
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: large;
+        background-color: rgba(229, 244, 16, 0.616);
+        
+
+      }
+      .unknown1 {
+        display: flex;
+        justify-content: center;
+        margin-left: -9%;
+        padding-top: 20px;
+        margin-top: 10px;
+        font-family: "cida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        font-weight: bold;
+      }
+      .checkbox {
+        background-color: rgba(229, 244, 16, 0.616);
+        margin-top: 30px;
+        margin-left: 40%;
+        font-family: "Times New Roman", Times, serif;
+      }
+      .checkbox1 {
+        background-color: yellow;
+        margin-top: 30px;
+        margin-left: 70%;
+        margin-bottom: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+      .succesResult {
+        text-align: center;
+        margin-left: -12%;
+      }
+      .magicBox {
+        padding-left: 50px;
+        border-color: black;
+      }
+      .headbox {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="headbox">
+        <h2 class="magicBox">Magic Game</h2>
+        <h3 class="scoreDashboard">score :</h3>
+      </div>
+
+      <hr />
+      <div class="menu">
+        <h3 class="attemp1">Attempt : 5</h3>
+        <p class="box1">~ Between 0 and 10 ~</p>
+        <h3>Minimum Attempt : 5</h3>
+      </div>
+
+      <div class="unknown">?</div>
+      <p class="unknown1">Guess the number !</p>
+      <div>
+        <input type="number hidden"  class="unknown" id="inputNo" />
+      </div>
+      <button class="checkbox" onclick="setValue()">Check</button>
+      <h3 class="succesResult"></h3>
+      <button type="reset" class="checkbox1">Restart</button>
+    </div>
+
+    <script>
+      let btnCheck = document.querySelector(".checkbox");
+      let btnCheck1 = document.querySelector(".checkbox1");
+      var inputValue;
+      var gameNo;
+      var scoreDashboard;
+      function setValue() {
+        inputValue = document.getElementById("inputNo").value;
+        console.log(inputValue);
+        const random = Math.random() * 10;
+        gameNo = Math.floor(random);
+        console.log("hello");
+      }
+      var count = 5;
+      btnCheck.addEventListener("click", (evt) => {
+        // document.querySelector("#inputNo").innerText = guessNo;
+        if (gameNo == inputValue) {
+          document.querySelector(".succesResult").innerText = "Congratulation";
+          scoreDashboard = scoreDashboard+5;
+          document.querySelector(".scoreDashboard").innerText =
+            "Score : " + scoreDashboard;
+        } else {
+          document.querySelector(".succesResult").innerText =
+            "Please try again ";
+        }
+        document.querySelector(".attemp1").innerText =
+          "Attempt : " + count;
+        count--;
+        console.log("hello");
+
+        //////////////////////handl////////
+        if (count == -1) {
+          console.log(count);
+          count = 0;
+
+          btnCheck1.addEventListener("click", (evt) => {
+            console.log("welcome to new Start");
+            document.querySelector(".succesResult").innerText =
+              " Welcome to Guess No Game ";
+            count = 5;
+            scoreDashboard = 0;
+            document.querySelector(".scoreDashboard").innerText =
+              "Score : " + scoreDashboard;
+            document.querySelector(".attemp1").innerText =
+              "Minimum attempt : " + count;
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
