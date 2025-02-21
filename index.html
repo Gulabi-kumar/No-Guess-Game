@@ -20,8 +20,8 @@
       }
       .menu {
         display: flex;
-        justify-content: center;
         justify-content: space-around;
+        text-align: center;
         flex-wrap: wrap; 
       }
       .box1 {
@@ -33,8 +33,8 @@
         font-size: large;
         border: 1px solid black;
         border-radius: 120px;
-        padding-left:20px;
-        padding-top: 8px;
+        padding-top: 7px;
+        margin-left:10%;
         background-color: rgba(229, 244, 16, 0.616);
         min-width: 200px;
       }
@@ -42,30 +42,24 @@
         height: 30px;
         width: 50px;
         background-color: rgba(229, 244, 16, 0.616);
-        display: flex;
-        justify-content: center;
         padding-top: 20px;
         margin-top: 10px;
-        margin-left: 40%;
+        text-align: center;
         font-weight: bold;
+        margin: auto;
         border: 2px solid black;
       }
 
       #inputNo {
         height: 20px;
         background-color: rgba(229, 244, 16, 0.616);
-        align-items: center;
-        text-align: center;
         padding-bottom: 10px;
-        font-size: large;
-        background-color: rgba(229, 244, 16, 0.616);
-        
-
+        font-size: large;      
+        margin-left:45%;
       }
       .unknown1 {
         display: flex;
         justify-content: center;
-        margin-left: -9%;
         padding-top: 20px;
         margin-top: 10px;
         font-family: "cida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -75,7 +69,7 @@
       .checkbox {
         background-color: rgba(229, 244, 16, 0.616);
         margin-top: 30px;
-        margin-left: 40%;
+        margin-left: 45%;
         font-family: "Times New Roman", Times, serif;
       }
       .checkbox1 {
@@ -87,7 +81,6 @@
       }
       .succesResult {
         text-align: center;
-        margin-left: -12%;
       }
       .magicBox {
         padding-left: 50px;
@@ -98,6 +91,10 @@
         justify-content: space-around;
         flex-wrap: wrap;
       }
+      #guessNo{
+        margin-top: -10px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -106,7 +103,6 @@
         <h2 class="magicBox">Magic Game</h2>
         <h3 class="scoreDashboard">score :</h3>
       </div>
-
       <hr />
       <div class="menu">
         <h3 class="attemp1">Attempt : 5</h3>
@@ -117,10 +113,11 @@
       <div class="unknown">?</div>
       <p class="unknown1">Guess the number !</p>
       <div>
-        <input type="number hidden"  class="unknown" id="inputNo" />
+        <input type="number hidden" class="unknown"  id="inputNo" />
       </div>
       <button class="checkbox" onclick="setValue()">Check</button>
       <h3 class="succesResult"></h3>
+      <p id="guessNo" class="unknown1">press No 1</p>
       <button type="reset" class="checkbox1">Restart</button>
     </div>
 
@@ -133,6 +130,7 @@
       function setValue() {
         inputValue = document.getElementById("inputNo").value;
         console.log(inputValue);
+        document.querySelector("#guessNo").innerText="Press No : " + inputValue;
         const random = Math.random() * 5;
         gameNo = Math.floor(random);
         console.log("hello");
@@ -169,6 +167,7 @@
               "Score : " + scoreDashboard;
             document.querySelector(".attemp1").innerText =
               "Minimum attempt : " + count;
+            document.querySelector("#guessNo").innerText="Press No : ";  
           });
         }
       });
